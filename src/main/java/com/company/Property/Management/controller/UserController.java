@@ -23,5 +23,10 @@ public class UserController {
         return responseEntity;
     }
 
-
+    @PostMapping("/login")
+    public ResponseEntity<UserModel> loginUser(@RequestBody UserModel userModel){
+        userModel=userService.userLogin(userModel.getPropertyOwnerEmail(),userModel.getUserPassword());
+        ResponseEntity<UserModel> responseEntity=new ResponseEntity<>(userModel, HttpStatus.OK);
+        return responseEntity;
+    }
 }
